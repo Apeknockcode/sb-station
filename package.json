@@ -11,6 +11,7 @@
     "eslint": "eslint --ext .tsx,.ts --fix ./src"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@swc/helpers": "^0.5.0",
     "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^3.1.0",
