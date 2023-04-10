@@ -1,12 +1,10 @@
 import { useState } from 'react'
-
+import MyBasicLayout from "@/layout/myBasicLayout"
 import './App.module.scss'
 
 function App() {
   return (
-    <div className="App">
-     這是一個項目
-    </div>
+    <MyBasicLayout></MyBasicLayout>
   )
 }
 
