@@ -7,3 +7,8 @@ body {
   padding: 0px;
   box-sizing: border-box;
 }
+
+#root{
+  min-width: 1280px;
+  overflow-y: auto;
+}

@@ -1,5 +1,7 @@
-import React from 'react'
-import {Col, Row, Collapse} from 'antd'
+import React from "react";
+import { Col, Row, Collapse } from "antd";
+import BsButton from "./components/basic/bs_Button"
+import * as ReactDOMClient from 'react-dom/client';
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -12,26 +14,104 @@ import {
   PhoneOutlined,
   PlusSquareOutlined,
   UserOutlined,
-} from '@ant-design/icons'
-import bsStyle from './bsStyle.module.scss'
+} from "@ant-design/icons";
+import bsStyle from "./bsStyle.module.scss";
+
+
 function BuildStation() {
-  const {Panel} = Collapse
+  const { Panel } = Collapse;
   const colLeft: React.CSSProperties = {
-    height: '100vh',
-  }
-  const colContent: React.CSSProperties = {
-    height: '100vh',
-  }
+    height: "100vh",
+  };
   const colRight: React.CSSProperties = {
-    height: '100vh',
+    height: "100vh",
+  };
+
+  const componentsList = {
+    basicComponent: [
+      {
+        id: 1,
+        name: "富文本",
+        number: "20",
+        icon: <FontSizeOutlined />,
+      },
+      {
+        id: 2,
+        name: "按钮",
+        number: "20",
+        icon: <PlusSquareOutlined />,
+      },
+      {
+        id: 3,
+        name: "滚动播放",
+        number: "20",
+        icon: <ColumnHeightOutlined />,
+      },
+      {
+        id: 4,
+        name: "选号",
+        number: "20",
+        icon: <ContactsOutlined />,
+      },
+      {
+        id: 5,
+        name: "倒计时",
+        number: "20",
+        icon: <FieldTimeOutlined />,
+      },
+    ],
+    msgComponents: [
+      {
+        id: 1,
+        name: "姓名",
+        number: "20",
+        icon: <UserOutlined />,
+      },
+      {
+        id: 2,
+        name: "联系电话",
+        number: "20",
+        icon: <PhoneOutlined />,
+      },
+      {
+        id: 3,
+        name: "收货地址",
+        number: "20",
+        icon: <AimOutlined />,
+      },
+      {
+        id: 4,
+        name: "详细地址",
+        number: "20",
+        icon: <CompassOutlined />,
+      },
+      {
+        id: 5,
+        name: "协议",
+        number: "20",
+        icon: <FileTextOutlined />,
+      },
+      {
+        id: 6,
+        name: "身份证号",
+        number: "20",
+        icon: <IdcardOutlined />,
+      },
+    ]
+  };
+  const handleRenderComponent = (item: any) => {
+    const rootElement = document.getElementById("visibleArea") as HTMLElement;
+    console.log("handleRenderComponent", rootElement)
+    const root = ReactDOMClient.createRoot(rootElement);
+    root.render(<BsButton />);
   }
 
   return (
-    <Row>
-      <Col flex="300px" className={ bsStyle.colLeft} style={colLeft} >
-        <Collapse defaultActiveKey={['1', '2', '3']} bordered={false} ghost>
+    <Row className={bsStyle.contain}>
+      <Col flex="300px" className={`${bsStyle.colLeft} shadow`} style={colLeft}>
+        <Collapse defaultActiveKey={["2", "3"]} bordered={false} ghost>
           <Panel header="模板" key="1">
-            <Row gutter={[24, 24]}>
+            {/* <Row gutter={[24, 24]}>
               <Col className={ bsStyle.gutterRow} span={12}>
                 <div  className={`${bsStyle.box} flex-col flex items-center`}>col-6</div>
               </Col>
@@ -47,150 +127,59 @@ function BuildStation() {
               <Col className={ bsStyle.gutterRow} span={12}>
                 <div  className={`${bsStyle.box} flex-col flex items-center`}>col-6</div>
               </Col>
-            </Row>
+            </Row> */}
           </Panel>
           <Panel header="基础组件" key="2">
             <Row gutter={[10, 16]}>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div  className={`${bsStyle.box} flex-col flex items-center`}  >
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <FontSizeOutlined />
-                  </div>
-                  <div className={ `${bsStyle.icoName } text-xs`}>富文本</div>
-                  <div className={bsStyle.icoNumber}>0/20</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div   className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <PlusSquareOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>按钮</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <ColumnHeightOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>滚动播放</div>
-                  <div className={bsStyle.icoNumber}>0/20</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <ContactsOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>选号</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <FieldTimeOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>倒计时</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
+              {
+                componentsList.basicComponent.map(item => {
+                  return (
+                    <Col key={item.id} className={bsStyle.gutterRow} span={6} onClick={() => handleRenderComponent(item)}>
+                      <div className={`${bsStyle.box} flex-col flex items-center`}>
+                        <div className={`${bsStyle.iconBox} flex justify-center items-center`} >
+                          {item.icon}
+                        </div>
+                        <div className={bsStyle.icoName}>{item.name}</div>
+                        <div className={bsStyle.icoNumber}>0/{item.number}</div>
+                      </div>
+                    </Col>
+                  )
+                })
+              }
             </Row>
           </Panel>
           <Panel header="信息验证" key="3">
             <Row gutter={[10, 16]} justify="start">
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <UserOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>姓名</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <PhoneOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>联系电话</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <AimOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>收获地址</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <CompassOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>详细地址</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <FileTextOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>协议</div>
-                  <div className={bsStyle.icoNumber}>0/10</div>
-                </div>
-              </Col>
-              <Col className={ bsStyle.gutterRow} span={6}>
-                <div    className={`${bsStyle.box} flex-col flex items-center`}>
-                  <div
-                    className={`${bsStyle.iconBox} flex justify-center items-center`}
-                  >
-                    <IdcardOutlined />
-                  </div>
-                  <div className={bsStyle.icoName}>身份证号</div>
-                  <div className={bsStyle.icoNumber}>0/1</div>
-                </div>
-              </Col>
+              {
+                componentsList.msgComponents.map(item => {
+                  return (
+                    <Col key={item.id} className={bsStyle.gutterRow} span={6} onClick={() => handleRenderComponent(item)}>
+                      <div className={`${bsStyle.box} flex-col flex items-center`}>
+                        <div className={`${bsStyle.iconBox} flex justify-center items-center`}>
+                          {item.icon}
+                        </div>
+                        <div className={bsStyle.icoName}>{item.name}</div>
+                        <div className={bsStyle.icoNumber}>0/{item.number}</div>
+                      </div>
+                    </Col>
+                  )
+                })
+              }
             </Row>
           </Panel>
         </Collapse>
       </Col>
       <Col flex="1000px" className="flex justify-center items-center">
-        <div className={ bsStyle.visibleArea}>
+        <div  className={bsStyle.visibleArea}>
 
 
         </div>
       </Col>
-      <Col flex="atuo" style={colRight}>
+      <Col flex="auto" className={`shadow`} style={colRight}>
         属性区域
       </Col>
     </Row>
-  )
+  );
 }
 
-export default BuildStation
+export default BuildStation;
