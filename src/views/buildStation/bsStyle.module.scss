@@ -1,19 +1,46 @@
-.icoName {
-  font-size: 12px;
-}
-.icoNumber {
-  font-size: 10px;
+.colLeft {
+  -moz-user-select: none;
+  /* Firefox私有属性 */
+  -webkit-user-select: none;
+  /* WebKit内核私有属性 */
+  -ms-user-select: none;
+  /* IE私有属性(IE10及以后) */
+  -khtml-user-select: none;
+  /* Khtml内核私有属性 */
+  -o-user-select: none;
+  /* Opera私有属性 */
+  user-select: none;
+  /* CSS3属性 */
 }
 .iconBox {
-  width: max-content;
-  height: max-content;
+  width: 40px;
+  height: 40px;
   padding: 4px 8px;
   box-sizing: border-box;
   background: #e3f9ff;
   color: #222;
   margin-bottom: 4px;
   font-size: 18px;
+
 }
-// .colBox :hover {
-//   border: 1px double #b5d6f1;
-// }
+
+.box {
+  padding: 4px 0;
+  cursor: pointer;
+
+}
+
+.gutterRow {
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px dotted #c0e8f3
+  }
+}
+
+//视图模块
+.visibleArea{
+ width: 375px;
+ height: 667px;
+ border: 1px solid #cdcdcd;
+}

@@ -4,7 +4,7 @@ import legacy from '@vitejs/plugin-legacy'
 import pxtovw from 'postcss-px-to-viewport'
 const loder_pxtovw = pxtovw({
   unitToConvert: 'px', // 要转化的单位
-  viewportWidth: 1280, // UI设计稿的宽度
+  viewportWidth: 1960, // UI设计稿的宽度
   unitPrecision: 2, // 转换后的精度，即小数点位数
   propList: ['*'], // 指定转换的css属性的单位，*代表全部css属性的单位都进行转换
   viewportUnit: 'vw', // 指定需要转换成的视窗单位，默认vw
@@ -22,7 +22,9 @@ export default defineConfig({
   plugins: [
     react(),
     legacy({
-      targets: ['cover:99.5%'],
+      targets: ['chrome < 60', 'edge < 15'],
+      renderLegacyChunks: true,
+      // targets: ['cover:95.5%'],
     }),
   ],
   base: './',
@@ -40,9 +42,9 @@ export default defineConfig({
     //     }),
     //   ],
     // },
-    postcss: {
-      plugins: [loder_pxtovw],
-    },
+    // postcss: {
+    //   plugins: [loder_pxtovw],
+    // },
     preprocessorOptions: {
       scss: {
         javascriptEnabled: true,
@@ -56,9 +58,9 @@ export default defineConfig({
     },
   },
   server: {
-    host:"0.0.0.0",
+    host: '0.0.0.0',
     port: 8088,
-    strictPort:true, // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
+    strictPort: true, // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口。
     open: true,
     proxy: {
       // '/api': {

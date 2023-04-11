@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import BuildStation from '@/views/buildStation/index'
 import Login from '@/views/login/login'
-import './index.module.scss'
+import './index.css'
 import 'core-js/stable'
 import {HashRouter, Routes, Route} from 'react-router-dom'
 
