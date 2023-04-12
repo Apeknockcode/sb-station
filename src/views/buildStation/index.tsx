@@ -1,7 +1,13 @@
-import React, {ReactPortal, useState, useEffect} from 'react'
-import {Col, Row, Collapse} from 'antd'
-import BsButton from './components/basic/bs_Button'
-import ReactDOM, {createPortal} from 'react-dom'
+import React, { ReactPortal, useState, useEffect } from "react";
+import { Col, Row, Collapse } from "antd";
+import BsButton from "./components/basic/bsButton";
+import BsPhone from "./components/msg/bsPhone";
+import BsIdCards from "./components/msg/bsIdCards"
+import BsName from "./components/msg/bsName"
+import BsAddDetailed from "./components/msg/bsAddDetailed"
+import BsAddress from "./components/msg/bsAddress"
+import BsImage from "./components/basic/bsImage"
+import { Container, Draggable, DropResult } from "react-smooth-dnd";
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -14,104 +20,132 @@ import {
   PhoneOutlined,
   PlusSquareOutlined,
   UserOutlined,
-} from '@ant-design/icons'
-import bsStyle from './bsStyle.module.scss'
+} from "@ant-design/icons";
+import bsStyle from "./bsStyle.module.scss";
 
 function BuildStation() {
-  const {Panel} = Collapse
+  const { Panel } = Collapse;
   interface nodeType {
-    key: string
-    vnode: JSX.Element
+    key: string;
+    time:number;
+    vnode: JSX.Element;
   }
-  const [node, setNode] = useState([] as Array<nodeType>)
+  const [node, setNode] = useState([] as Array<nodeType>);
   const componentsList = {
     basicComponent: [
       {
         id: 1,
-        name: '富文本',
-        number: '20',
+        key: new Date().getTime(),
+        name: "富文本",
+        number: "20",
         icon: <FontSizeOutlined />,
+        vDom:<BsImage />
       },
       {
         id: 2,
-        name: '按钮',
-        number: '20',
+        key: new Date().getTime(),
+        name: "按钮",
+        number: "20",
         icon: <PlusSquareOutlined />,
+        vDom: <BsButton />
       },
       {
         id: 3,
-        name: '滚动播放',
-        number: '20',
+        key: new Date().getTime(),
+        name: "滚动播放",
+        number: "20",
         icon: <ColumnHeightOutlined />,
+        vDom: <BsButton />
       },
       {
         id: 4,
-        name: '选号',
-        number: '20',
+        key: new Date().getTime(),
+        name: "选号",
+        number: "20",
         icon: <ContactsOutlined />,
+        vDom: <BsButton />
       },
       {
         id: 5,
-        name: '倒计时',
-        number: '20',
+        key: new Date().getTime(),
+        name: "倒计时",
+        number: "20",
         icon: <FieldTimeOutlined />,
+        vDom: <BsButton />
       },
     ],
     msgComponents: [
       {
         id: 1,
-        name: '姓名',
-        number: '20',
+        key: new Date().getTime(),
+        name: "姓名",
+        number: "20",
         icon: <UserOutlined />,
+        vDom: <BsName />
       },
       {
         id: 2,
-        name: '联系电话',
-        number: '20',
+        key: new Date().getTime(),
+        name: "联系电话",
+        number: "20",
         icon: <PhoneOutlined />,
+        vDom: <BsPhone />
       },
       {
         id: 3,
-        name: '收货地址',
-        number: '20',
+        key: new Date().getTime(),
+        name: "收货地址",
+        number: "20",
         icon: <AimOutlined />,
+        vDom: <BsAddress />
       },
       {
         id: 4,
-        name: '详细地址',
-        number: '20',
+        key: new Date().getTime(),
+        name: "详细地址",
+        number: "20",
         icon: <CompassOutlined />,
+        vDom: <BsAddDetailed />
       },
       {
         id: 5,
-        name: '协议',
-        number: '20',
+        key: new Date().getTime(),
+        name: "协议",
+        number: "20",
         icon: <FileTextOutlined />,
+        vDom: <BsButton />
       },
       {
         id: 6,
-        name: '身份证号',
-        number: '20',
+        key: new Date().getTime(),
+        name: "身份证号",
+        number: "20",
         icon: <IdcardOutlined />,
+        vDom: <BsIdCards />
       },
     ],
-  }
-  useEffect(() => {}, [])
+  };
+  useEffect(() => { }, []);
   const handleRenderComponent = (item: any) => {
     setNode((current) => [
       ...current,
       {
         key: item.name,
-        vnode: <BsButton key={`${new Date().getTime()} `}  />,
+        time: new Date().getTime(),
+        vnode: item.vDom,
       },
-    ])
-     console.log(node)
+    ]);
+  };
+
+  const handleDrop = (dropResult:DropResult) => {
+    const { removedIndex, addedIndex, payload, element } = dropResult;
+    console.log('handleDrop',node)
   }
 
   return (
     <Row className={bsStyle.contain}>
       <Col flex="300px" className={`${bsStyle.colLeft} shadow h-screen`}>
-        <Collapse defaultActiveKey={['2', '3']} bordered={false} ghost>
+        <Collapse defaultActiveKey={["2", "3"]} bordered={false} ghost>
           <Panel header="模板" key="1">
             {/* <Row gutter={[24, 24]}>
               <Col className={ bsStyle.gutterRow} span={12}>
@@ -153,7 +187,7 @@ function BuildStation() {
                       <div className={bsStyle.icoNumber}>0/{item.number}</div>
                     </div>
                   </Col>
-                )
+                );
               })}
             </Row>
           </Panel>
@@ -179,24 +213,28 @@ function BuildStation() {
                       <div className={bsStyle.icoNumber}>0/{item.number}</div>
                     </div>
                   </Col>
-                )
+                );
               })}
             </Row>
           </Panel>
         </Collapse>
       </Col>
-      <Col flex="1000px" className="flex justify-center items-center">
-        <div id="visibleArea" className={bsStyle.visibleArea}>
-          {node.map((value, key) => {
-            return value.vnode
-          })}
+      <Col flex="auto" className="flex justify-center items-center">
+        <div id="visibleArea" className={`${bsStyle.visibleArea} overflow-y-auto`} >
+          <Container dragClass={bsStyle.opacityGhost} dropClass={bsStyle.opacityGhostDrop} onDrop={handleDrop}>
+            {node.map((value, k) => {
+              console.log(value)
+              return <Draggable key={value.time}>{value.vnode}</Draggable>;
+            })}
+          </Container>
         </div>
+
       </Col>
-      <Col flex="auto" className={`shadow h-screen`}>
+      {/* <Col flex="auto" className={`shadow h-screen`}>
         属性区域
-      </Col>
+      </Col> */}
     </Row>
-  )
+  );
 }
 
-export default BuildStation
+export default BuildStation;

@@ -12,3 +12,7 @@ body {
   min-width: 1280px;
   overflow-y: auto;
 }
+:where(.css-dev-only-do-not-override-1vtf12y).ant-image {
+  position: relative;
+  display: block;
+}
