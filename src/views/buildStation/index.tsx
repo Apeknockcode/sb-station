@@ -21,7 +21,7 @@ function BuildStation() {
   const {Panel} = Collapse
   interface nodeType {
     key: string
-    vnode: ReactPortal
+    vnode: JSX.Element
   }
   const [node, setNode] = useState([] as Array<nodeType>)
   const componentsList = {
@@ -98,16 +98,14 @@ function BuildStation() {
   }
   useEffect(() => {}, [])
   const handleRenderComponent = (item: any) => {
-    const element = document.getElementById('visibleArea') as HTMLElement
-    const vnode = createPortal(<BsButton />, element)
- 
-    setNode((currur) => [
-      ...currur,
+    setNode((current) => [
+      ...current,
       {
         key: item.name,
-        vnode: vnode,
+        vnode: <BsButton key={`${new Date().getTime()} `}  />,
       },
     ])
+     console.log(node)
   }
 
   return (
