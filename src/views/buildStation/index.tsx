@@ -1,6 +1,6 @@
 import React, { ReactPortal, useState, useEffect } from 'react'
 import "./bs.css"
-import {Col, Row, Collapse} from 'antd'
+import { Col, Row, Collapse } from 'antd'
 import BsButton from './components/basic/bsButton'
 import BsPhone from './components/msg/bsPhone'
 import BsIdCards from './components/msg/bsIdCards'
@@ -8,7 +8,7 @@ import BsName from './components/msg/bsName'
 import BsAddDetailed from './components/msg/bsAddDetailed'
 import BsAddress from './components/msg/bsAddress'
 import BsImage from './components/basic/bsImage'
-import {Container, Draggable, DropResult} from 'react-smooth-dnd'
+import { Container, Draggable, DropResult } from 'react-smooth-dnd'
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -23,10 +23,10 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import bsStyle from './bsStyle.module.scss'
-import {applyDrag} from '../../utils/tools'
+import { applyDrag } from '../../utils/tools'
 
 function BuildStation() {
-  const {Panel} = Collapse
+  const { Panel } = Collapse
   interface nodeType {
     key: string
     time: number
@@ -127,7 +127,7 @@ function BuildStation() {
       },
     ],
   }
-  useEffect(() => {}, [])
+  useEffect(() => { }, [])
   const handleRenderComponent = (item: any) => {
     setNode((current) => [
       ...current,
@@ -140,15 +140,13 @@ function BuildStation() {
   }
 
   const handleDrop = (dropResult: DropResult) => {
-    const {removedIndex, addedIndex, payload, element} = dropResult
-    console.log('removedIndex', removedIndex)
-    console.log('addedIndex', addedIndex)
-    console.log('payload', payload)
-    console.log('element', element)
-    console.log('handleDrop', node)
     const rearrange = applyDrag(node, dropResult)
-    console.log('Rearrange', rearrange)
     setNode(rearrange)
+  }
+
+  const handleDrag = (e: any) => {
+
+    console.log('handleDrag', e)
   }
 
   return (
@@ -240,8 +238,11 @@ function BuildStation() {
             onDrop={(e) => handleDrop(e)}
           >
             {node.map((value, k) => {
-              console.log(value)
-              return <Draggable key={value.time}>{value.vnode}</Draggable>
+              console.log(value.vnode)
+              return (
+                <Draggable id={`${value.time}`} key={value.time} onClick={(e)=>handleDrag(e)}>{value.vnode}</Draggable>
+              )
+
             })}
           </Container>
         </div>
