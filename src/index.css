@@ -1,6 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 body {
   margin: 0px;
@@ -8,7 +8,7 @@ body {
   box-sizing: border-box;
 }
 
-#root{
+#root {
   min-width: 1280px;
   overflow-y: auto;
 }
