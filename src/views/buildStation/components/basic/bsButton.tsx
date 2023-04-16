@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button } from '@nutui/nutui-react';
 import React from 'react';
 
 function BsButton() {

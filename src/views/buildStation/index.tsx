@@ -9,6 +9,8 @@ import BsAddDetailed from './components/msg/bsAddDetailed'
 import BsAddress from './components/msg/bsAddress'
 import BsImage from './components/basic/bsImage'
 import { Container, Draggable, DropResult } from 'react-smooth-dnd'
+// import "./nutui.module.scss"
+import '@nutui/nutui-react/dist/style.css'
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -144,11 +146,6 @@ function BuildStation() {
     setNode(rearrange)
   }
 
-  const handleDrag = (e: any) => {
-
-    console.log('handleDrag', e)
-  }
-
   return (
     <Row className={bsStyle.contain}>
       <Col flex="300px" className={`${bsStyle.colLeft} shadow h-screen`}>
@@ -240,7 +237,7 @@ function BuildStation() {
             {node.map((value, k) => {
               console.log(value.vnode)
               return (
-                <Draggable id={`${value.time}`} key={value.time} onClick={(e)=>handleDrag(e)}>{value.vnode}</Draggable>
+                <Draggable id={`${value.time}`} key={value.time}>{value.vnode}</Draggable>
               )
 
             })}
