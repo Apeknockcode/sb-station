@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image } from '@nutui/nutui-react';
+import { Image } from 'antd';
 function BsImage() {
   return (
     <Image
         className='w-full'
+        preview={false}
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
       />
   );

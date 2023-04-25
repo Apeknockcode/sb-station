@@ -1,9 +1,23 @@
+<<<<<<< HEAD
 import React, { ReactPortal, useState, useEffect, useRef } from "react";
 import { Col, Row, Collapse, Popover } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Container, Draggable, DropResult } from "react-smooth-dnd";
 // import "./nutui.module.scss"
 import "@nutui/nutui-react/dist/style.css";
+=======
+import React, { ReactPortal, useState, useEffect } from 'react'
+import "./bs.css"
+import { Col, Row, Collapse } from 'antd'
+import BsButton from './components/basic/bsButton'
+import BsPhone from './components/msg/bsPhone'
+import BsIdCards from './components/msg/bsIdCards'
+import BsName from './components/msg/bsName'
+import BsAddDetailed from './components/msg/bsAddDetailed'
+import BsAddress from './components/msg/bsAddress'
+import BsImage from './components/basic/bsImage'
+import { Container, Draggable, DropResult } from 'react-smooth-dnd'
+>>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -135,6 +149,7 @@ function BuildStation() {
   };
 
   const handleDrop = (dropResult: DropResult) => {
+<<<<<<< HEAD
     const rearrange = applyDrag(node, dropResult);
     setNode(rearrange);
   };
@@ -148,6 +163,17 @@ function BuildStation() {
   const handleDelComponent = () => {
     console.log("handleDelComponent");
   };
+=======
+    const rearrange = applyDrag(node, dropResult)
+    setNode(rearrange)
+  }
+
+  const handleDrag = (e: any) => {
+
+    console.log('handleDrag', e)
+  }
+
+>>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
   return (
     <Row className={bsStyle.contain}>
       <Col flex="300px" className={`${bsStyle.colLeft} shadow h-screen`}>
@@ -222,6 +248,7 @@ function BuildStation() {
             {node.map((value, k) => {
               console.log(value.vnode);
               return (
+<<<<<<< HEAD
                 <Draggable
                 id={`${value.time}`}
                 key={value.time}
@@ -231,6 +258,11 @@ function BuildStation() {
                 {value.vnode}
               </Draggable>
               );
+=======
+                <Draggable id={`${value.time}`} key={value.time} onClick={(e)=>handleDrag(e)}>{value.vnode}</Draggable>
+              )
+
+>>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
             })}
           </Container>
         </div>
