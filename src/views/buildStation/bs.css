@@ -1,7 +1,0 @@
-:where(.css-dev-only-do-not-override-1vtf12y).ant-input:placeholder-shown {
-  background: transparent;
-}
-:where(.css-dev-only-do-not-override-1vtf12y).ant-input:focus,
-:where(.css-dev-only-do-not-override-1vtf12y).ant-input-focused {
-  box-shadow: none;
-}
