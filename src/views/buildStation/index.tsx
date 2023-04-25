@@ -1,23 +1,13 @@
-<<<<<<< HEAD
-import React, { ReactPortal, useState, useEffect, useRef } from "react";
-import { Col, Row, Collapse, Popover } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import React, { ReactPortal, useState, useEffect } from "react";
+import { Col, Row, Collapse } from "antd";
+import BsButton from "./components/basic/bsButton";
+import BsPhone from "./components/msg/bsPhone";
+import BsIdCards from "./components/msg/bsIdCards";
+import BsName from "./components/msg/bsName";
+import BsAddDetailed from "./components/msg/bsAddDetailed";
+import BsAddress from "./components/msg/bsAddress";
+import BsImage from "./components/basic/bsImage";
 import { Container, Draggable, DropResult } from "react-smooth-dnd";
-// import "./nutui.module.scss"
-import "@nutui/nutui-react/dist/style.css";
-=======
-import React, { ReactPortal, useState, useEffect } from 'react'
-import "./bs.css"
-import { Col, Row, Collapse } from 'antd'
-import BsButton from './components/basic/bsButton'
-import BsPhone from './components/msg/bsPhone'
-import BsIdCards from './components/msg/bsIdCards'
-import BsName from './components/msg/bsName'
-import BsAddDetailed from './components/msg/bsAddDetailed'
-import BsAddress from './components/msg/bsAddress'
-import BsImage from './components/basic/bsImage'
-import { Container, Draggable, DropResult } from 'react-smooth-dnd'
->>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -92,7 +82,7 @@ function BuildStation() {
         name: "姓名",
         number: "20",
         icon: <UserOutlined />,
-        // vDom: <BsName />,
+        vDom: <BsName />,
       },
       {
         id: 2,
@@ -100,7 +90,7 @@ function BuildStation() {
         name: "联系电话",
         number: "20",
         icon: <PhoneOutlined />,
-        // vDom: <BsPhone />,
+        vDom: <BsPhone />,
       },
       {
         id: 3,
@@ -136,50 +126,48 @@ function BuildStation() {
       },
     ],
   };
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log('node',node)
+    debugger
+  }, [node]);
   const handleRenderComponent = (item: any) => {
     setNode((current) => [
       ...current,
       {
         key: item.name,
         time: new Date().getTime(),
+        focus:false,
         vnode: item.vDom,
       },
     ]);
+
   };
 
   const handleDrop = (dropResult: DropResult) => {
-<<<<<<< HEAD
     const rearrange = applyDrag(node, dropResult);
     setNode(rearrange);
   };
-  const userBox = useRef(null);
-  const handleSelectCom = () => {
-    console.log("userBox", userBox);
-    // let element = userBox.current as unknown as HTMLDivElement;
-    // element.style.border = "0.5px solid #37a4e8";
-    debugger;
-  };
-  const handleDelComponent = () => {
-    console.log("handleDelComponent");
-  };
-=======
-    const rearrange = applyDrag(node, dropResult)
-    setNode(rearrange)
+
+  const handleClickDra= (dropResult: DropResult,index:number)=>{
+    // console.log('dropResult',dropResult.currentTarget.style.border="1px dashed red")
+
+    node.forEach((item,key)=>{
+      item.focus=false
+      if(key === index ){
+        item.focus=true
+      }
+    })
+    setNode((current) => [
+      ...current,
+    ])
+
   }
 
-  const handleDrag = (e: any) => {
-
-    console.log('handleDrag', e)
-  }
-
->>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
   return (
     <Row className={bsStyle.contain}>
       <Col flex="300px" className={`${bsStyle.colLeft} shadow h-screen`}>
         <Collapse defaultActiveKey={["2", "3"]} bordered={false} ghost>
-          <Panel header="模板" key="1">
-          </Panel>
+          <Panel header="模板" key="1"></Panel>
           <Panel header="基础组件" key="2">
             <Row gutter={[10, 16]}>
               {componentsList.basicComponent.map((item) => {
@@ -246,23 +234,13 @@ function BuildStation() {
             onDrop={(e) => handleDrop(e)}
           >
             {node.map((value, k) => {
-              console.log(value.vnode);
               return (
-<<<<<<< HEAD
-                <Draggable
-                id={`${value.time}`}
-                key={value.time}
-                ref={userBox}
-                onClick={handleSelectCom}
-              >
-                {value.vnode}
-              </Draggable>
+                <Draggable id={`${value.time}`} key={value.time} onClick={(e)=>handleClickDra(e,k)} style={{
+                  border:value.focus?'1px dashed red':''
+                }} >
+                  {value.vnode}
+                </Draggable>
               );
-=======
-                <Draggable id={`${value.time}`} key={value.time} onClick={(e)=>handleDrag(e)}>{value.vnode}</Draggable>
-              )
-
->>>>>>> parent of 4dc7213 (采用 移动端组件 nutui)
             })}
           </Container>
         </div>
