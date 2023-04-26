@@ -4,7 +4,6 @@ function BsPhone() {
   const phoneStyle: React.CSSProperties = {
     width: '100%',
     border: 'none',
-    textAlign: 'end',
     padding: '0px',
     '--text-align': 'right',
   }

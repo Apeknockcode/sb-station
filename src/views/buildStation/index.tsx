@@ -8,6 +8,7 @@ import BsAddDetailed from './components/msg/bsAddDetailed'
 import BsAddress from './components/msg/bsAddress'
 import BsImage from './components/basic/bsImage'
 import Agreement from './components/msg/agreement'
+import MsgCode from "./components/msg/code"
 import {Container, Draggable, DropResult} from 'react-smooth-dnd'
 // 导出鼠标右点击事件 / 样式
 import 'react-contexify/ReactContexify.css'
@@ -25,6 +26,7 @@ import {
   PhoneOutlined,
   PlusSquareOutlined,
   UserOutlined,
+  MessageOutlined,
 } from '@ant-design/icons'
 import bsStyle from './bsStyle.module.scss'
 import {applyDrag} from '../../utils/tools'
@@ -114,7 +116,7 @@ function BuildStation() {
         vDom: <BsAddDetailed />,
       },
       {
-        id: 6,
+        id: 5,
         key: new Date().getTime(),
         name: '身份证号',
         number: '20',
@@ -122,7 +124,15 @@ function BuildStation() {
         vDom: <BsIdCards />,
       },
       {
-        id: 5,
+        id: 6,
+        key: new Date().getTime(),
+        name: '验证码',
+        number: '20',
+        icon: <MessageOutlined />,
+        vDom: <MsgCode />,
+      },
+      {
+        id: 7,
         key: new Date().getTime(),
         name: '协议',
         number: '20',
