@@ -130,7 +130,7 @@ function StyleCom(props) {
           </div>
         </div>
          <div className="flex items-center">
-          <span className="w-20">边框：</span>
+          <span className="w-20">元素边框：</span>
           <div className="flex item-center">
             <Input placeholder="请输入内容" />
           </div>
@@ -142,7 +142,13 @@ function StyleCom(props) {
           </div>
         </div>
          <div className="flex items-center">
-          <span className="w-20">按钮文案：</span>
+          <span className="w-20">协议列表：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">元素动画：</span>
           <div className="flex item-center">
             <Input placeholder="请输入内容" />
           </div>
