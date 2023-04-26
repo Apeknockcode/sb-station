@@ -8,12 +8,13 @@ import BsAddDetailed from './components/msg/bsAddDetailed'
 import BsAddress from './components/msg/bsAddress'
 import BsImage from './components/basic/bsImage'
 import Agreement from './components/msg/agreement'
-import MsgCode from "./components/msg/code"
+import MsgCode from './components/msg/code'
+import BsRight from './bsRight'
 import {Container, Draggable, DropResult} from 'react-smooth-dnd'
 // 导出鼠标右点击事件 / 样式
 import 'react-contexify/ReactContexify.css'
 import {Menu, Item, Separator, Submenu, useContextMenu} from 'react-contexify'
-console.log('Menu', Menu)
+import {createStore} from 'redux'
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -30,8 +31,10 @@ import {
 } from '@ant-design/icons'
 import bsStyle from './bsStyle.module.scss'
 import {applyDrag} from '../../utils/tools'
+import bsReducer from './../../store/bsReducer'
 
 function BuildStation() {
+  const bsStore = createStore(bsReducer)
   const {Panel} = Collapse
   interface nodeType {
     key: string
@@ -39,6 +42,7 @@ function BuildStation() {
     vnode: JSX.Element
   }
   const [node, setNode] = useState([] as Array<nodeType>)
+  const [selectIndex, setSelectIndex] = useState(null)
   const componentsList = {
     basicComponent: [
       {
@@ -88,6 +92,9 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '姓名',
         number: '20',
+        pr: {
+          style: {},
+        },
         icon: <UserOutlined />,
         vDom: <BsName />,
       },
@@ -96,6 +103,9 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '联系电话',
         number: '20',
+        pr: {
+          style: {},
+        },
         icon: <PhoneOutlined />,
         vDom: <BsPhone />,
       },
@@ -104,6 +114,9 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '收货地址',
         number: '20',
+        pr: {
+          style: {},
+        },
         icon: <AimOutlined />,
         vDom: <BsAddress />,
       },
@@ -112,6 +125,10 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '详细地址',
         number: '20',
+        pr: {
+          style: {},
+          content: {},
+        },
         icon: <CompassOutlined />,
         vDom: <BsAddDetailed />,
       },
@@ -120,6 +137,10 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '身份证号',
         number: '20',
+        pr: {
+          style: {},
+          content: {},
+        },
         icon: <IdcardOutlined />,
         vDom: <BsIdCards />,
       },
@@ -128,6 +149,10 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '验证码',
         number: '20',
+        pr: {
+          style: {},
+          content: {},
+        },
         icon: <MessageOutlined />,
         vDom: <MsgCode />,
       },
@@ -136,23 +161,25 @@ function BuildStation() {
         key: new Date().getTime(),
         name: '协议',
         number: '20',
+        pr: {
+          style: {},
+          content: {},
+        },
         icon: <FileTextOutlined />,
         vDom: <Agreement />,
       },
     ],
   }
   useEffect(() => {
-    console.log('node', node)
-    // debugger
+    bsStore.dispatch({type: 'addComDate', node})
   }, [node])
+
   const handleRenderComponent = (item: any) => {
     setNode((current) => [
       ...current,
       {
-        key: item.name,
-        time: new Date().getTime(),
+        ...item,
         focus: false,
-        vnode: item.vDom,
       },
     ])
   }
@@ -169,12 +196,14 @@ function BuildStation() {
         item.focus = true
       }
     })
+    setSelectIndex(index)
+    bsStore.dispatch({type: 'setSelectIndex', index})
     setNode((current) => [...current])
   }
+
   const {show, hidden} = useContextMenu({
     id: 'menu',
   })
-
   // 右键可选项
   const handleContextMenu = (event, index) => {
     node.forEach((item, key) => {
@@ -222,8 +251,8 @@ function BuildStation() {
     <Row className={bsStyle.contain}>
       <Col flex="300px" className={`${bsStyle.colLeft} shadow h-screen`}>
         <Collapse defaultActiveKey={['2', '3']} bordered={false} ghost>
-          <Panel header="模板" key="1"></Panel>
-          <Panel header="基础组件" key="2">
+          {/* <Panel header="模板" key="1"></Panel> */}
+          {/* <Panel header="基础组件" key="2">
             <Row gutter={[10, 16]}>
               {componentsList.basicComponent.map((item) => {
                 return (
@@ -248,7 +277,7 @@ function BuildStation() {
                 )
               })}
             </Row>
-          </Panel>
+          </Panel> */}
           <Panel header="信息验证" key="3">
             <Row gutter={[10, 16]} justify="start">
               {componentsList.msgComponents.map((item) => {
@@ -311,8 +340,8 @@ function BuildStation() {
             {node.map((value, k) => {
               return (
                 <Draggable
-                  id={`${value.time}`}
-                  key={value.time}
+                  id={`${value.key}`}
+                  key={value.key}
                   style={{
                     border: value.focus
                       ? '1px dashed red'
@@ -321,7 +350,7 @@ function BuildStation() {
                   onClick={(e) => handleClickDraggable(e, k)}
                   onContextMenu={(e) => handleContextMenu(e, k)}
                 >
-                  {value.vnode}
+                  {value.vDom}
                 </Draggable>
               )
             })}
@@ -329,7 +358,7 @@ function BuildStation() {
         </div>
       </Col>
       <Col flex="auto" className={`shadow h-screen`}>
-        属性
+        <BsRight store={bsStore} index={selectIndex} />
       </Col>
     </Row>
   )

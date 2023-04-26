@@ -23,6 +23,7 @@ specifiers:
   react-dom: ^18.2.0
   react-router-dom: ^6.10.0
   react-smooth-dnd: ^0.11.1
+  redux: ^4.2.1
   sass: ^1.61.0
   tailwindcss: ^3.3.1
   terser: '>=5.4.0 <6.0.0'
@@ -43,6 +44,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: registry.npmmirror.com/react-router-dom/6.10.0_biqbaboplfbrettd7655fr4n2y
   react-smooth-dnd: 0.11.1_react@18.2.0
+  redux: registry.npmmirror.com/redux/4.2.1
   terser: registry.npmmirror.com/terser/5.16.8
 
 devDependencies:
@@ -92,7 +94,7 @@ packages:
     resolution: {integrity: sha512-xwII0//EObnq89Ji5AKYQaRYiW/nZ3llSv29d49IuxPhKbtJoLP+9QUUZ4nVragQVtaVGeZrpB+ZtG/Pdy/POw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.11
+      regenerator-runtime: registry.npmmirror.com/regenerator-runtime/0.13.11
     dev: false
 
   /@ctrl/tinycolor/3.6.0:
@@ -114,7 +116,7 @@ packages:
     resolution: {integrity: sha512-9N8nRk0oKj1qJzANKl+n9eNSMUGsZtjwNuDCiZ/KA+dt1fE3zq5x2XxclRcAbOIXnZcJ53ozP2Pa60gyELXagA==}
     engines: {node: '>=8.x'}
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
     dev: false
 
   /@react-spring/animated/9.6.1_react@18.2.0:
@@ -252,7 +254,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       '@types/js-cookie': 2.2.7
       ahooks-v3-count: 1.0.0
       dayjs: 1.11.7
@@ -384,7 +386,7 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       async-validator: 4.2.5
       rc-util: 5.29.3_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
@@ -397,7 +399,7 @@ packages:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
     dependencies:
-      '@babel/runtime': 7.21.0
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-is: 16.13.1
@@ -436,10 +438,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
-
-  /regenerator-runtime/0.13.11:
-    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
   /resize-observer-polyfill/1.5.1:
@@ -5487,6 +5485,14 @@ packages:
       indent-string: registry.npmmirror.com/indent-string/4.0.0
       strip-indent: registry.npmmirror.com/strip-indent/3.0.0
     dev: true
+
+  registry.npmmirror.com/redux/4.2.1:
+    resolution: {integrity: sha512-LAUYz4lc+Do8/g7aeRa8JkyDErK6ekstQaqWQrNRW//MY1TvCEpMtpTWvlQ+FPbWCx+Xixu/6SHt5N0HR+SB4w==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/redux/-/redux-4.2.1.tgz}
+    name: redux
+    version: 4.2.1
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime/7.21.0
+    dev: false
 
   registry.npmmirror.com/regenerate-unicode-properties/10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/regenerate-unicode-properties/-/regenerate-unicode-properties-10.1.0.tgz}
