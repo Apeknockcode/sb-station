@@ -7,6 +7,7 @@ function BsPhone() {
     border: 'none',
     textAlign: 'end',
     padding: '0px',
+    '--text-align': 'right',
   }
   return (
     <div className="p-2">

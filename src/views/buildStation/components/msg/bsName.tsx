@@ -25,10 +25,11 @@ import { Input } from 'antd-mobile'
 function BsPhone() {
   // console.log('BsPhone',props)
   const phoneStyle: React.CSSProperties = {
-    width: "100%",
-    border: "none",
+    width: '100%',
+    border: 'none',
     textAlign: 'end',
-    padding:'0px',
+    padding: '0px',
+    '--text-align': 'right',
   }
   return (
     <div className='p-2'>

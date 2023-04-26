@@ -7,6 +7,7 @@ import BsName from './components/msg/bsName'
 import BsAddDetailed from './components/msg/bsAddDetailed'
 import BsAddress from './components/msg/bsAddress'
 import BsImage from './components/basic/bsImage'
+import Agreement from './components/msg/agreement'
 import {Container, Draggable, DropResult} from 'react-smooth-dnd'
 // 导出鼠标右点击事件 / 样式
 import 'react-contexify/ReactContexify.css'
@@ -102,7 +103,7 @@ function BuildStation() {
         name: '收货地址',
         number: '20',
         icon: <AimOutlined />,
-        // vDom: <BsAddress />,
+        vDom: <BsAddress />,
       },
       {
         id: 4,
@@ -113,20 +114,20 @@ function BuildStation() {
         vDom: <BsAddDetailed />,
       },
       {
-        id: 5,
-        key: new Date().getTime(),
-        name: '协议',
-        number: '20',
-        icon: <FileTextOutlined />,
-        // vDom: <BsButton />,
-      },
-      {
         id: 6,
         key: new Date().getTime(),
         name: '身份证号',
         number: '20',
         icon: <IdcardOutlined />,
         vDom: <BsIdCards />,
+      },
+      {
+        id: 5,
+        key: new Date().getTime(),
+        name: '协议',
+        number: '20',
+        icon: <FileTextOutlined />,
+        vDom: <Agreement />,
       },
     ],
   }
@@ -151,15 +152,15 @@ function BuildStation() {
     setNode(rearrange)
   }
 
-  // const handleClickDraggable = (dropResult: DropResult, index: number) => {
-  //   node.forEach((item, key) => {
-  //     item.focus = false
-  //     if (key === index) {
-  //       item.focus = true
-  //     }
-  //   })
-  //   setNode((current) => [...current])
-  // }
+  const handleClickDraggable = (dropResult: DropResult, index: number) => {
+    node.forEach((item, key) => {
+      item.focus = false
+      if (key === index) {
+        item.focus = true
+      }
+    })
+    setNode((current) => [...current])
+  }
   const {show, hidden} = useContextMenu({
     id: 'menu',
   })
@@ -307,7 +308,7 @@ function BuildStation() {
                       ? '1px dashed red'
                       : '1px solid transparent',
                   }}
-                  // onClick={(e) => handleClickDraggable(e, k)}
+                  onClick={(e) => handleClickDraggable(e, k)}
                   onContextMenu={(e) => handleContextMenu(e, k)}
                 >
                   {value.vnode}
