@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import { Input, Space } from 'antd';
 import {
   AlignLeftOutlined,
   AlignCenterOutlined,
   AlignRightOutlined,
 } from '@ant-design/icons'
-import {Space, Input} from 'antd'
 function StyleCom(props) {
   const [align, setAlign] = useState('left')
 
@@ -21,24 +21,24 @@ function StyleCom(props) {
             />
             <AlignCenterOutlined
               className={`mx-3 cursor-pointer ${
-                align == 'left' ? 'text-sendCode' : ''
+                align == 'center' ? 'text-sendCode' : ''
               }`}
             />
             <AlignRightOutlined
               className={`mx-3 cursor-pointer ${
-                align == 'left' ? 'text-sendCode' : ''
+                align == 'right' ? 'text-sendCode' : ''
               }`}
             />
           </div>
         </div>
         <div className="flex items-center">
-          <span>提示文本：</span>
+          <span className="w-20">提示文本：</span>
           <div className="flex item-center">
             <Input placeholder="请输入内容" />
           </div>
         </div>
         <div className="flex items-center">
-          <span>外边距：</span>
+          <span className="w-20">外边距：</span>
           <div className="flex item-center">
             <div className="flex items-center mr-2">
               xL:{' '}
@@ -75,7 +75,7 @@ function StyleCom(props) {
           </div>
         </div>
         <div className="flex items-center">
-          <span>内边距：</span>
+          <span className="w-20">内边距：</span>
           <div className="flex item-center">
             <div className="flex items-center mr-2">
               xL:{' '}
@@ -86,7 +86,7 @@ function StyleCom(props) {
               />
             </div>
             <div className="flex items-center  mr-2">
-              xR:{' '}
+              xR:
               <Input
                 placeholder="xR"
                 className="ml-2"
@@ -94,7 +94,7 @@ function StyleCom(props) {
               />
             </div>
             <div className="flex items-center  mr-2">
-              yT:{' '}
+              yT:
               <Input
                 placeholder="yT"
                 className="ml-2"
@@ -102,7 +102,7 @@ function StyleCom(props) {
               />
             </div>
             <div className="flex items-center">
-              yB:{' '}
+              yB:
               <Input
                 placeholder="yB"
                 className="ml-2"
@@ -112,7 +112,40 @@ function StyleCom(props) {
           </div>
         </div>
         <div className="flex items-center">
-          
+          <span className="w-20">圆角：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">盒子阴影：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">背景颜色：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">边框：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">按钮文案：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
+        </div>
+         <div className="flex items-center">
+          <span className="w-20">按钮文案：</span>
+          <div className="flex item-center">
+            <Input placeholder="请输入内容" />
+          </div>
         </div>
       </Space>
     </div>
