@@ -110,7 +110,7 @@ function BuildStation() {
         name: '详细地址',
         number: '20',
         icon: <CompassOutlined />,
-        // vDom: <BsAddDetailed />,
+        vDom: <BsAddDetailed />,
       },
       {
         id: 5,
@@ -126,7 +126,7 @@ function BuildStation() {
         name: '身份证号',
         number: '20',
         icon: <IdcardOutlined />,
-        // vDom: <BsIdCards />,
+        vDom: <BsIdCards />,
       },
     ],
   }
@@ -160,10 +160,8 @@ function BuildStation() {
   //   })
   //   setNode((current) => [...current])
   // }
-
-  const MENU_ID = 'blahblah'
   const {show, hidden} = useContextMenu({
-    id: MENU_ID,
+    id: 'menu',
   })
 
   // 右键可选项
@@ -274,7 +272,11 @@ function BuildStation() {
           className={`${bsStyle.visibleArea} overflow-y-auto`}
         >
           {/* 自定义菜单 */}
-          <Menu id={MENU_ID} onVisibilityChange={trackVisibility}>
+          <Menu
+            id="menu"
+            onVisibilityChange={trackVisibility}
+            style={{maxWidth: '80px'}}
+          >
             <Item id="dele" onClick={handleItemClick}>
               删除
             </Item>
