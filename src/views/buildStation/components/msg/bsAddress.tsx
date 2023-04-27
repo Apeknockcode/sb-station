@@ -1,6 +1,6 @@
 import React from 'react'
 import {Input} from 'antd-mobile'
-function BsPhone() {
+function BsAddress() {
   const phoneStyle: React.CSSProperties = {
     width: '100%',
     border: 'none',
@@ -23,4 +23,4 @@ function BsPhone() {
   )
 }
 
-export default BsPhone
+export default BsAddress

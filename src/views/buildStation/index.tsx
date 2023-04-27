@@ -14,7 +14,7 @@ import {Container, Draggable, DropResult} from 'react-smooth-dnd'
 // 导出鼠标右点击事件 / 样式
 import 'react-contexify/ReactContexify.css'
 import {Menu, Item, Separator, Submenu, useContextMenu} from 'react-contexify'
-import {createStore} from 'redux'
+
 import {
   AimOutlined,
   ColumnHeightOutlined,
@@ -31,10 +31,11 @@ import {
 } from '@ant-design/icons'
 import bsStyle from './bsStyle.module.scss'
 import {applyDrag} from '../../utils/tools'
-import bsReducer from './../../store/bsReducer'
+import {useSelector, useDispatch} from 'react-redux'
 
 function BuildStation() {
-  const bsStore = createStore(bsReducer)
+  const dispatch = useDispatch()
+  // const bsStore = createStore(bsReducer)
   const {Panel} = Collapse
   interface nodeType {
     key: string
@@ -93,7 +94,17 @@ function BuildStation() {
         name: '姓名',
         number: '20',
         pr: {
-          style: {},
+          style: {
+            containStyle: {},
+            inputStyle: {
+              '--text-align': 'right',
+              '--placeholder-color': '',
+              '--font-size': '',
+              '--color': '',
+            },
+            textStyle: {},
+          },
+          content: {},
         },
         icon: <UserOutlined />,
         vDom: <BsName />,
@@ -171,7 +182,7 @@ function BuildStation() {
     ],
   }
   useEffect(() => {
-    bsStore.dispatch({type: 'addComDate', node})
+    dispatch({type: 'addComDate', node})
   }, [node])
 
   const handleRenderComponent = (item: any) => {
@@ -197,7 +208,7 @@ function BuildStation() {
       }
     })
     setSelectIndex(index)
-    bsStore.dispatch({type: 'setSelectIndex', index})
+    dispatch({type: 'setSelectIndex', index})
     setNode((current) => [...current])
   }
 
@@ -358,7 +369,7 @@ function BuildStation() {
         </div>
       </Col>
       <Col flex="auto" className={`shadow h-screen`}>
-        <BsRight store={bsStore} index={selectIndex} />
+        <BsRight index={selectIndex} />
       </Col>
     </Row>
   )

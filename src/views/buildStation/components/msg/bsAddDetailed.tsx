@@ -1,7 +1,7 @@
 import React from 'react'
 import {Input} from 'antd-mobile'
 import style from './msgStyle.module.scss'
-function BsPhone() {
+function BsAddDeatiled() {
   const phoneStyle: React.CSSProperties = {
     width: '100%',
     border: 'none',
@@ -23,4 +23,4 @@ function BsPhone() {
   )
 }
 
-export default BsPhone
+export default BsAddDeatiled

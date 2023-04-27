@@ -1,6 +1,7 @@
 const initialState = {
   comDate: [],
-  index: null,// 用户遍历的下标
+  index: null, // 用户遍历的下标
+  text: '用户遍历的下标',
 }
 
 const bsReducer = (state = initialState, action) => {
@@ -12,7 +13,7 @@ const bsReducer = (state = initialState, action) => {
       return {...state, index: action.index}
       break
     default:
-      break
+       return state
   }
 }
 
